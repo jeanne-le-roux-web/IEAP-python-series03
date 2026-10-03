@@ -22,6 +22,8 @@ def find_local_extrema(s: np.ndarray):
 
     The derivative is approximated by np.diff(s). A negative zero crossing
     of the derivative is a local maximum, a positive one is a local minimum.
+    If the extremum is a plateau (several consecutive samples with the same
+    value), only the last sample of the plateau is returned.
 
     Parameters
     ----------
@@ -75,6 +77,16 @@ def test_find_local_extrema():
     i_max, i_min = find_local_extrema(np.array([1, 2, 3]))
     assert np.array_equal(i_max, np.array([]))
     assert np.array_equal(i_min, np.array([]))
+
+        # flat top: only the last sample of the plateau is returned
+    i_max, i_min = find_local_extrema(np.array([0, 1, 1, 0]))
+    assert np.array_equal(i_max, np.array([2]))
+    assert np.array_equal(i_min, np.array([]))
+
+    # flat valley: only the last sample of the plateau is returned
+    i_max, i_min = find_local_extrema(np.array([1, 0, 0, 1]))
+    assert np.array_equal(i_max, np.array([]))
+    assert np.array_equal(i_min, np.array([2]))
 
 
 # Testing the function (only when this file is run, not when it is imported)
