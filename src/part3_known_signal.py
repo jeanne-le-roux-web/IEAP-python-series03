@@ -11,6 +11,7 @@ from part2_extrema import plot_local_maxima, plot_local_minima
 # A reusable function to generate a sine wave from its amplitude, frequency and phase,
 # so both components of the signal are built the same way.
 # %%
+
 def sinusoid(t: np.ndarray, amplitude: float, frequency: float, phase: float = 0.0):
     """
     Generate a sine wave.
@@ -71,6 +72,7 @@ def create_signal(duration: float = 2.0, sampling_frequency: float = 100.0):
 # %% [markdown]
 # The signal is plotted as dots only, to show that it is sampled, as in the homework figure.
 # %%
+
 def display_sampled_signal(t: np.ndarray, s: np.ndarray, sampling_frequency: float):
     """
     Create a new figure with the sampled signal as dots, as in the homework, then show it.
@@ -96,10 +98,20 @@ def display_sampled_signal(t: np.ndarray, s: np.ndarray, sampling_frequency: flo
     plt.ylabel("Amplitude (mm)")
     plt.grid(True)
     plt.show()
+
+
+if __name__ == "__main__":
+    # create the signal and plot it as in the homework
+    sampling_frequency = 100.0
+    t, s1, s2, s = create_signal(sampling_frequency=sampling_frequency)
+    display_sampled_signal(t, s, sampling_frequency)
+
+
 # %% [markdown]
 # ### 3.1. Create the signal and plot it
 # The two components and their sum are plotted together to show how the signal is built.
 # %%
+
 def plot_signal_components(t: np.ndarray, s1: np.ndarray, s2: np.ndarray, s: np.ndarray):
     """
     Plot the two components and their sum as a function of time.
@@ -146,11 +158,17 @@ def display_signal_components(t: np.ndarray, s1: np.ndarray, s2: np.ndarray, s: 
     plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
     plt.grid(True)
     plt.show()
+
+
+if __name__ == "__main__":
+    display_signal_components(t, s1, s2, s)
+
  
 # %% [markdown]
 # ### 3.2. Plot the remarkable points
 # The remarkable points are found and plotted by reusing the functions from parts 1 and 2.
 # %%
+
 def display_signal_and_remarkable_points(t: np.ndarray, s: np.ndarray):
     """
     Create a new figure with the signal, its zero crossings and its local extrema, then show it.
@@ -176,11 +194,17 @@ def display_signal_and_remarkable_points(t: np.ndarray, s: np.ndarray):
     plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
     plt.grid(True)
     plt.show()
+
+
+if __name__ == "__main__":
+    display_signal_and_remarkable_points(t, s)
+
  
 # %% [markdown]
 # ### 3.3. Use the remarkable points to find the frequency of the signal
 # Two consecutive zero crossings with the same slope are separated by exactly one period.
 # %%
+
 def compute_frequency_from_zero_crossings(t: np.ndarray, s: np.ndarray):
     """
     Estimate the period and frequency of a signal from its zero crossings.
@@ -216,19 +240,9 @@ def compute_frequency_from_zero_crossings(t: np.ndarray, s: np.ndarray):
         "signal_period (s)": period,
         "signal_frequency (Hz)": 1 / period,
     }
- 
-# %%
-# Example usage (only when this file is run, not when it is imported)
+
+
 if __name__ == "__main__":
-    # create the signal and plot it as in the homework
-    sampling_frequency = 100.0
-    t, s1, s2, s = create_signal(sampling_frequency=sampling_frequency)
-    display_sampled_signal(t, s, sampling_frequency)
- 
-    display_signal_components(t, s1, s2, s)
- 
-    display_signal_and_remarkable_points(t, s)
- 
     # compute and print the frequency information, right aligned as in the expected output
     frequency_info = compute_frequency_from_zero_crossings(t, s)
     for key, value in frequency_info.items():
