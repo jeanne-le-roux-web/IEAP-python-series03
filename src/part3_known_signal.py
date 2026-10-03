@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 # functions from parts 1 and 2
 from part1_zero_crossings import find_zero_crossings, plot_signal, plot_zero_crossings
 from part2_extrema import plot_local_maxima, plot_local_minima
- # %% [markdown]
+# %% [markdown]
 # ## 3. Analyze a known signal
 # A reusable function to generate a sine wave from its amplitude, frequency and phase,
 # so both components of the signal are built the same way.
@@ -96,8 +96,7 @@ def display_sampled_signal(t: np.ndarray, s: np.ndarray, sampling_frequency: flo
     plt.ylabel("Amplitude (mm)")
     plt.grid(True)
     plt.show()
- 
- # %% [markdown]
+# %% [markdown]
 # ### 3.1. Create the signal and plot it
 # %%
 def plot_signal_components(t: np.ndarray, s1: np.ndarray, s2: np.ndarray, s: np.ndarray):
@@ -147,7 +146,7 @@ def display_signal_components(t: np.ndarray, s1: np.ndarray, s2: np.ndarray, s: 
     plt.grid(True)
     plt.show()
  
- # %% [markdown]
+# %% [markdown]
 # ### 3.2. Plot the remarkable points
 # The remarkable points are found and plotted by reusing the functions from parts 1 and 2.
 # %%
@@ -177,7 +176,7 @@ def display_signal_and_remarkable_points(t: np.ndarray, s: np.ndarray):
     plt.grid(True)
     plt.show()
  
- # %% [markdown]
+# %% [markdown]
 # ### 3.3. Use the remarkable points to find the frequency of the signal
 # Two consecutive zero crossings with the same slope are separated by exactly one period.
 # %%
