@@ -147,4 +147,34 @@ def display_signal_components(t: np.ndarray, s1: np.ndarray, s2: np.ndarray, s: 
     plt.grid(True)
     plt.show()
  
+ # %% [markdown]
+# ### 3.2. Plot the remarkable points
+# The remarkable points are found and plotted by reusing the functions from parts 1 and 2.
+# %%
+def display_signal_and_remarkable_points(t: np.ndarray, s: np.ndarray):
+    """
+    Create a new figure with the signal, its zero crossings and its local extrema, then show it.
+ 
+    Parameters
+    ----------
+    t : np.ndarray
+        Time values, in seconds.
+    s : np.ndarray
+        Signal values.
+ 
+    Returns
+    -------
+    None. Shows the figure with plt.show().
+    """
+    plt.figure()
+    plot_signal(t, s)
+    plot_zero_crossings(t, s)
+    plot_local_maxima(t, s)
+    plot_local_minima(t, s)
+    # plot_signal labels the x axis "index", here the x axis is time
+    plt.xlabel("time [s]")
+    plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
+    plt.grid(True)
+    plt.show()
+ 
  
