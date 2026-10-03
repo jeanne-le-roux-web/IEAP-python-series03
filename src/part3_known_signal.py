@@ -97,4 +97,54 @@ def display_sampled_signal(t: np.ndarray, s: np.ndarray, sampling_frequency: flo
     plt.grid(True)
     plt.show()
  
+ # %% [markdown]
+# ### 3.1. Create the signal and plot it
+# %%
+def plot_signal_components(t: np.ndarray, s1: np.ndarray, s2: np.ndarray, s: np.ndarray):
+    """
+    Plot the two components and their sum as a function of time.
+ 
+    Parameters
+    ----------
+    t : np.ndarray
+        Time values, in seconds.
+    s1, s2 : np.ndarray
+        The two sine wave components.
+    s : np.ndarray
+        Sum of the components.
+ 
+    Returns
+    -------
+    None. Draws on the current figure without showing it.
+    """
+    plt.plot(t, s1, ".-", markersize=3, linewidth=0.25, color="green", label="s1")
+    plt.plot(t, s2, ".-", markersize=3, linewidth=0.25, color="orange", label="s2")
+    plt.plot(t, s, ".-", markersize=6, linewidth=0.25, color="blue", label="s")
+    plt.xlabel("time [s]")
+    plt.ylabel("signal")
+ 
+ 
+def display_signal_components(t: np.ndarray, s1: np.ndarray, s2: np.ndarray, s: np.ndarray):
+    """
+    Create a new figure with the two components and their sum, then show it.
+ 
+    Parameters
+    ----------
+    t : np.ndarray
+        Time values, in seconds.
+    s1, s2 : np.ndarray
+        The two sine wave components.
+    s : np.ndarray
+        Sum of the components.
+ 
+    Returns
+    -------
+    None. Shows the figure with plt.show().
+    """
+    plt.figure()
+    plot_signal_components(t, s1, s2, s)
+    plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
+    plt.grid(True)
+    plt.show()
+ 
  
