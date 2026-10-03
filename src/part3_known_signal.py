@@ -98,6 +98,7 @@ def display_sampled_signal(t: np.ndarray, s: np.ndarray, sampling_frequency: flo
     plt.show()
 # %% [markdown]
 # ### 3.1. Create the signal and plot it
+# The two components and their sum are plotted together to show how the signal is built.
 # %%
 def plot_signal_components(t: np.ndarray, s1: np.ndarray, s2: np.ndarray, s: np.ndarray):
     """
