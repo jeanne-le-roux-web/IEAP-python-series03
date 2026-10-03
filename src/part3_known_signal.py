@@ -177,4 +177,59 @@ def display_signal_and_remarkable_points(t: np.ndarray, s: np.ndarray):
     plt.grid(True)
     plt.show()
  
+ # %% [markdown]
+# ### 3.3. Use the remarkable points to find the frequency of the signal
+# Two consecutive zero crossings with the same slope are separated by exactly one period.
+# %%
+def compute_frequency_from_zero_crossings(t: np.ndarray, s: np.ndarray):
+    """
+    Estimate the period and frequency of a signal from its zero crossings.
  
+    Parameters
+    ----------
+    t : np.ndarray
+        Time values, in seconds, regularly sampled.
+    s : np.ndarray
+        Signal values.
+ 
+    Returns
+    -------
+    dict
+        Number of samples between consecutive positive and negative zero
+        crossings, periods estimated from each, mean period and frequency.
+    """
+    i_pos, i_neg = find_zero_crossings(s)
+    # number of samples between two consecutive crossings with the same slope
+    delta_pos = np.diff(i_pos)
+    delta_neg = np.diff(i_neg)
+    # time between two samples
+    sampling_period = t[1] - t[0]
+    # mean distance in samples, converted to seconds
+    period_pos = np.mean(delta_pos) * sampling_period
+    period_neg = np.mean(delta_neg) * sampling_period
+    period = (period_pos + period_neg) / 2
+    return {
+        "delta_zero_crossing_pos (samples)": delta_pos,
+        "delta_zero_crossing_neg (samples)": delta_neg,
+        "signal_period_pos (s)": period_pos,
+        "signal_period_neg (s)": period_neg,
+        "signal_period (s)": period,
+        "signal_frequency (Hz)": 1 / period,
+    }
+ 
+# %%
+# Example usage (only when this file is run, not when it is imported)
+if __name__ == "__main__":
+    # create the signal and plot it as in the homework
+    sampling_frequency = 100.0
+    t, s1, s2, s = create_signal(sampling_frequency=sampling_frequency)
+    display_sampled_signal(t, s, sampling_frequency)
+ 
+    display_signal_components(t, s1, s2, s)
+ 
+    display_signal_and_remarkable_points(t, s)
+ 
+    # compute and print the frequency information, right aligned as in the expected output
+    frequency_info = compute_frequency_from_zero_crossings(t, s)
+    for key, value in frequency_info.items():
+        print(f"{key:>35} : {value}")
