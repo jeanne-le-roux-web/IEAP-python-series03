@@ -96,12 +96,13 @@ def test_find_zero_crossings():
     assert np.array_equal(i_neg, np.array([2]))
 
 
-# Testing the function
-try:
-    test_find_zero_crossings()
-    print("All tests passed.")
-except AssertionError:
-    raise  # propagate the error
+# Testing the function (only when this file is run, not when it is imported)
+if __name__ == "__main__":
+    try:
+        test_find_zero_crossings()
+        print("All tests passed.")
+    except AssertionError:
+        raise  # propagate the error
 
 
 
@@ -149,8 +150,9 @@ def display_signal_and_crossings(i: np.ndarray, s: np.ndarray):
     plt.show()
 
 
-# Example usage
-display_signal_and_crossings(index, signal)
+# Example usage (only when this file is run, not when it is imported)
+if __name__ == "__main__":
+    display_signal_and_crossings(index, signal)
 
 
 # %% [markdown]
@@ -393,12 +395,13 @@ def test_find_zero_crossings():
     assert raised
 
 
-# Testing the function
-try:
-    test_find_zero_crossings()
-    print("All tests passed.")
-except AssertionError:
-    raise  # propagate the error
+# Testing the function (only when this file is run, not when it is imported)
+if __name__ == "__main__":
+    try:
+        test_find_zero_crossings()
+        print("All tests passed.")
+    except AssertionError:
+        raise  # propagate the error
 
 
 
@@ -536,7 +539,8 @@ def display_signal_and_crossings(i: np.ndarray, s: np.ndarray):
     plt.show()
 
 
-# Example usage
-display_signal_and_crossings(index, signal)
+# Example usage (only when this file is run, not when it is imported)
+if __name__ == "__main__":
+    display_signal_and_crossings(index, signal)
 
 # %%
