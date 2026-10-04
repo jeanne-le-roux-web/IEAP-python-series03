@@ -1,1 +1,10 @@
-# Part 4 - Section 4: noisy signal and low-pass filter
+
+# Part 4 - Noisy Signal and Filtering
+
+# %%
+import numpy as np
+import matplotlib.pyplot as plt
+
+from part3_known_signal import create_signal
+
+# %%
