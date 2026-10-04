@@ -427,6 +427,3 @@ def display_filtered_signal(
 # The filtered signal follows the original signal closely, demonstrating that the filter effectively attenuates unwanted high-frequency fluctuations without substantially changing the overall shape of the signal.
 
 # This result illustrates the usefulness of low-pass filtering for improving signal quality and making the main features of a movement signal easier to identify.
-
-
-# %%
