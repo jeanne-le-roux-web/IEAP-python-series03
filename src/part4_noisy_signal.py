@@ -419,4 +419,14 @@ def display_filtered_signal(
     plt.grid(True)
     plt.legend()
     plt.show()
+# %% [markdown]
+# ### Observation and interpretation
+
+# The Butterworth low-pass filter was applied to the noisy signal to reduce high-frequency noise. The filtered signal (green) is considerably smoother than the noisy signal (orange), while preserving the main characteristics of the original signal (black).
+
+# The filtered signal follows the original signal closely, demonstrating that the filter effectively attenuates unwanted high-frequency fluctuations without substantially changing the overall shape of the signal.
+
+# This result illustrates the usefulness of low-pass filtering for improving signal quality and making the main features of a movement signal easier to identify.
+
+
 # %%
