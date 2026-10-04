@@ -137,3 +137,56 @@ def display_noisy_signal(
     plt.grid(True)
     plt.legend()
     plt.show()
+    # %% [markdown]
+# ### Compare the original and noisy signals
+
+
+# %%
+def display_amplitude_comparison(
+    t: np.ndarray,
+    original_signal: np.ndarray,
+    noisy_signal: np.ndarray
+):
+    """
+    Compare the original signal with the noisy signal.
+
+    Parameters
+    ----------
+    t : np.ndarray
+        Time values, in seconds.
+    original_signal : np.ndarray
+        Original signal.
+    noisy_signal : np.ndarray
+        Signal containing noise.
+
+    Returns
+    -------
+    None. Shows the figure.
+    """
+
+    plt.figure(figsize=(10, 5))
+
+    plt.plot(
+        t,
+        original_signal,
+        color="blue",
+        linewidth=1.5,
+        label="Original signal"
+    )
+
+    plt.plot(
+        t,
+        noisy_signal,
+        color="orange",
+        linewidth=0.8,
+        label="Noisy signal"
+    )
+
+    plt.title("Amplitude Comparison: Original vs Noisy Signal")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Amplitude")
+    plt.grid(True)
+    plt.legend()
+    plt.show()
+
+# %%
