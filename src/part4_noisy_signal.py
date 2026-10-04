@@ -52,4 +52,42 @@ def create_noisy_signal(
     noisy_signal = s + noise
 
     return noisy_signal, noise
+
+# %% [markdown]
+# ### Plot the white noise
+
+# %%
+def display_noise(t: np.ndarray, noise: np.ndarray):
+    """
+    Plot the generated white noise.
+
+    Parameters
+    ----------
+    t : np.ndarray
+        Time values, in seconds.
+    noise : np.ndarray
+        Generated noise.
+
+    Returns
+    -------
+    None. Shows the figure.
+    """
+
+    plt.figure(figsize=(10, 5))
+
+    plt.plot(
+        t,
+        noise,
+        ".",
+        markersize=5,
+        label="Noise"
+    )
+
+    plt.title("White Noise")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Noise amplitude")
+    plt.grid(True)
+    plt.legend()
+    plt.show()
+
 # %%
