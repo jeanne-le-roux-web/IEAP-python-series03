@@ -16,6 +16,7 @@ from part2_extrema import (
     plot_local_maxima,
     plot_local_minima
 )
+from scipy.signal import butter, filtfilt
 
 # %% [markdown]
 # ## 4. Redo the analysis with a noisy signal
@@ -311,4 +312,96 @@ def display_noisy_signal_and_remarkable_points(
 
 # These observations show that noise can make the detection of remarkable points less reliable. Therefore, applying a low-pass filter can help reduce unwanted fluctuations and improve the identification of the main features of the signal.
 
+
+# %% [markdown]
+# ### 4.3. Low-pass filter the noisy signal
+#
+# A Butterworth low-pass filter is used to reduce
+# high-frequency noise while preserving the main
+# characteristics of the original signal.
+
+
+# %%
+def low_pass_filter(
+    noisy_signal: np.ndarray,
+    sampling_frequency: float,
+    cutoff_frequency: float = 5.0,
+    order: int = 4
+):
+    """
+    Apply a Butterworth low-pass filter to a noisy signal.
+
+    Parameters
+    ----------
+    noisy_signal : np.ndarray
+        Signal containing noise.
+    sampling_frequency : float
+        Sampling frequency in Hz.
+    cutoff_frequency : float
+        Cutoff frequency in Hz.
+    order : int
+        Order of the Butterworth filter.
+
+    Returns
+    -------
+    filtered_signal : np.ndarray
+        Filtered signal.
+    """
+
+    # Design the Butterworth low-pass filter
+    b, a = butter(
+        order,
+        cutoff_frequency,
+        btype="low",
+        fs=sampling_frequency
+    )
+
+    # Apply the filter using forward-backward filtering
+    filtered_signal = filtfilt(b, a, noisy_signal)
+
+    return filtered_signal
+# %%
+def display_filtered_signal(
+    t: np.ndarray,
+    original_signal: np.ndarray,
+    noisy_signal: np.ndarray,
+    filtered_signal: np.ndarray
+):
+    """
+    Compare original, noisy and filtered signals.
+    """
+
+    plt.figure(figsize=(12, 6))
+
+    plt.plot(
+        t,
+        original_signal,
+        color="black",
+        linewidth=1.5,
+        label="Original signal"
+    )
+
+    plt.plot(
+        t,
+        noisy_signal,
+        color="orange",
+        linewidth=0.7,
+        alpha=0.5,
+        label="Noisy signal"
+    )
+
+    plt.plot(
+        t,
+        filtered_signal,
+        color="green",
+        linewidth=1.5,
+        label="Filtered signal"
+    )
+
+    plt.title("Original, Noisy and Filtered Signals")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Amplitude")
+    plt.grid(True)
+    plt.legend()
+    plt.show()
 # %%
