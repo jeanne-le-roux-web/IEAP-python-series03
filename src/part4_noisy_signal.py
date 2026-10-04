@@ -252,4 +252,54 @@ if __name__ == "__main__":
         noisy_signal
     )
 
+    # Plot the noisy signal with its remarkable points
+    display_noisy_signal_and_remarkable_points(
+        t,
+        noisy_signal
+    )
+
+# %%# %% [markdown]
+# ### 4.2. Plot the remarkable points in the noisy signal
+#
+# Detect and plot zero crossings, local maxima and local minima
+# using the functions developed in Parts 1 and 2.
+
+
 # %%
+def display_noisy_signal_and_remarkable_points(
+    t: np.ndarray,
+    noisy_signal: np.ndarray
+):
+    """
+    Plot the noisy signal with its remarkable points.
+
+    Parameters
+    ----------
+    t : np.ndarray
+        Time values, in seconds.
+    noisy_signal : np.ndarray
+        Signal containing noise.
+
+    Returns
+    -------
+    None. Shows the figure.
+    """
+
+    plt.figure(figsize=(12, 6))
+
+    # Plot the noisy signal
+    plot_signal(t, noisy_signal)
+
+    # Plot positive and negative zero crossings
+    plot_zero_crossings(t, noisy_signal)
+
+    # Plot local maxima and minima
+    plot_local_maxima(t, noisy_signal)
+    plot_local_minima(t, noisy_signal)
+
+    plt.title("Remarkable Points in the Noisy Signal")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Amplitude")
+    plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
+    plt.grid(True)
+    plt.show()
