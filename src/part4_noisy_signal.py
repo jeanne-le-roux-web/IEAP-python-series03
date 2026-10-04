@@ -258,6 +258,21 @@ if __name__ == "__main__":
         t,
         noisy_signal
     )
+    # Apply the Butterworth low-pass filter
+    filtered_signal = low_pass_filter(
+            noisy_signal,
+            sampling_frequency,
+            cutoff_frequency=5.0,
+            order=4
+        )
+    
+        # Plot original, noisy and filtered signals
+    display_filtered_signal(
+            t,
+            s,
+            noisy_signal,
+            filtered_signal
+        )
 
 # %%# %% [markdown]
 # ### 4.2. Plot the remarkable points in the noisy signal
