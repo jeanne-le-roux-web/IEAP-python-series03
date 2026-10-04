@@ -90,4 +90,50 @@ def display_noise(t: np.ndarray, noise: np.ndarray):
     plt.legend()
     plt.show()
 
+# %% [markdown]
+# ### Plot the noisy signal
+
+
 # %%
+def display_noisy_signal(
+    t: np.ndarray,
+    noisy_signal: np.ndarray
+):
+    """
+    Plot the signal containing noise.
+
+    Parameters
+    ----------
+    t : np.ndarray
+        Time values, in seconds.
+    noisy_signal : np.ndarray
+        Signal containing noise.
+
+    Returns
+    -------
+    None. Shows the figure.
+    """
+
+    plt.figure(figsize=(10, 5))
+
+    plt.axhline(
+        y=0,
+        color="black"
+    )
+
+    plt.plot(
+        t,
+        noisy_signal,
+        ".-",
+        markersize=3,
+        linewidth=0.25,
+        color="steelblue",
+        label="Noisy signal"
+    )
+
+    plt.title("Noisy Signal")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Amplitude")
+    plt.grid(True)
+    plt.legend()
+    plt.show()
