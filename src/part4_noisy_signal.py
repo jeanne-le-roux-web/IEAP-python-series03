@@ -303,3 +303,12 @@ def display_noisy_signal_and_remarkable_points(
     plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
     plt.grid(True)
     plt.show()
+# %% [markdown]
+# ### Observation and interpretation
+# The addition of white noise introduces rapid fluctuations in the original signal. As a result, the detection algorithm identifies more local maxima and minima than in the original signal.
+
+# The zero crossings are also affected by noise, as small fluctuations around zero can produce additional crossings.
+
+# These observations show that noise can make the detection of remarkable points less reliable. Therefore, applying a low-pass filter can help reduce unwanted fluctuations and improve the identification of the main features of the signal.
+
+# %%
