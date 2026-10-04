@@ -7,6 +7,16 @@ import matplotlib.pyplot as plt
 
 from part3_known_signal import create_signal
 
+from part1_zero_crossings import (
+    plot_signal,
+    plot_zero_crossings
+)
+
+from part2_extrema import (
+    plot_local_maxima,
+    plot_local_minima
+)
+
 # %% [markdown]
 # ## 4. Redo the analysis with a noisy signal
 #
