@@ -349,37 +349,6 @@ def display_filtered_signal(
     plt.legend()
     plt.show()
 
-    # Frequency analysis of the noisy signal
-    print("\nAnalysis of the noisy signal:")
-
-    noisy_frequency_info = compute_frequency_from_zero_crossings(
-        t,
-        noisy_signal
-    )
-
-    for key, value in noisy_frequency_info.items():
-        print(f"{key:>35} : {value}")
-
-
-    # Frequency analysis of the filtered signal
-    print("\nAnalysis of the noisy signal low-pass filtered at 5 Hz:")
-
-    filtered_frequency_info = compute_frequency_from_zero_crossings(
-        t,
-        filtered_signal
-    )
-
-    for key, value in filtered_frequency_info.items():
-        print(f"{key:>35} : {value}")
-
-# %% [markdown]
-# ### Observation and interpretation
-
-# The Butterworth low-pass filter was applied to the noisy signal to reduce high-frequency noise. The filtered signal (green) is considerably smoother than the noisy signal (orange), while preserving the main characteristics of the original signal (black).
-
-# The filtered signal follows the original signal closely, demonstrating that the filter effectively attenuates unwanted high-frequency fluctuations without substantially changing the overall shape of the signal.
-
-# This result illustrates the usefulness of low-pass filtering for improving signal quality and making the main features of a movement signal easier to identify.
 
 # %%
 if __name__ == "__main__":
@@ -440,10 +409,40 @@ if __name__ == "__main__":
             order=4
         )
     
-        # Plot original, noisy and filtered signals
+    # Plot original, noisy and filtered signals
     display_filtered_signal(
             t,
             s,
             noisy_signal,
             filtered_signal
         )
+    # Frequency analysis of the noisy signal
+    print("\nAnalysis of the noisy signal:")
+    
+    noisy_frequency_info = compute_frequency_from_zero_crossings(
+            t,
+            noisy_signal
+        )
+    
+    for key, value in noisy_frequency_info.items():
+            print(f"{key:>35} : {value}")
+    
+    
+    # Frequency analysis of the filtered signal
+    print("\nAnalysis of the noisy signal low-pass filtered at 5 Hz:")
+    
+    filtered_frequency_info = compute_frequency_from_zero_crossings(
+            t,
+            filtered_signal
+        )
+    
+    for key, value in filtered_frequency_info.items():
+            print(f"{key:>35} : {value}")
+# %% [markdown]
+# ### Observation and interpretation
+
+# The Butterworth low-pass filter was applied to the noisy signal to reduce high-frequency noise. The filtered signal (green) is considerably smoother than the noisy signal (orange), while preserving the main characteristics of the original signal (black).
+
+# The filtered signal follows the original signal closely, demonstrating that the filter effectively attenuates unwanted high-frequency fluctuations without substantially changing the overall shape of the signal.
+
+# This result illustrates the usefulness of low-pass filtering for improving signal quality and making the main features of a movement signal easier to identify.
