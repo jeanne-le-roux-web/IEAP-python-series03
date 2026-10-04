@@ -189,4 +189,57 @@ def display_amplitude_comparison(
     plt.legend()
     plt.show()
 
+# %% [markdown]
+# ### Generate and display the noisy signal
+#
+# Calculate the peak-to-peak amplitude of the original signal.
+# Set the noise amplitude to 20% of this value.
+
+
+# %%
+if __name__ == "__main__":
+
+    # Generate the original signal using Part 3
+    sampling_frequency = 100.0
+
+    t, s1, s2, s = create_signal(
+        sampling_frequency=sampling_frequency
+    )
+
+    # Calculate the peak-to-peak amplitude
+    signal_peak_to_peak_amplitude = np.ptp(s)
+
+    # Set noise amplitude to 20% of signal amplitude
+    noise_amplitude = 0.2 * signal_peak_to_peak_amplitude
+
+    print(
+        "Signal peak-to-peak amplitude:",
+        signal_peak_to_peak_amplitude
+    )
+
+    print(
+        "Noise amplitude:",
+        noise_amplitude
+    )
+
+    # Generate noisy signal and noise
+    noisy_signal, noise = create_noisy_signal(
+        t,
+        s,
+        noise_amplitude
+    )
+
+    # Plot white noise
+    display_noise(t, noise)
+
+    # Plot noisy signal
+    display_noisy_signal(t, noisy_signal)
+
+    # Compare original and noisy signals
+    display_amplitude_comparison(
+        t,
+        s,
+        noisy_signal
+    )
+
 # %%
