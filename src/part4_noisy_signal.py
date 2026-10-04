@@ -15,3 +15,41 @@ from part3_known_signal import create_signal
 # White noise is added to the original signal.
 # The noise amplitude is set to 20% of the peak-to-peak
 # amplitude of the original signal.
+# %%
+def create_noisy_signal(
+    t: np.ndarray,
+    s: np.ndarray,
+    noise_amplitude: float
+):
+    """
+    Add random white noise to the original signal.
+
+    Parameters
+    ----------
+    t : np.ndarray
+        Time values, in seconds.
+    s : np.ndarray
+        Original signal.
+    noise_amplitude : float
+        Peak-to-peak amplitude of the added noise.
+
+    Returns
+    -------
+    noisy_signal : np.ndarray
+        Original signal with added noise.
+    noise : np.ndarray
+        Generated noise.
+    """
+
+    # Generate random noise
+    noise = np.random.uniform(
+        -noise_amplitude / 2,
+        noise_amplitude / 2,
+        size=len(s)
+    )
+
+    # Add noise to the original signal
+    noisy_signal = s + noise
+
+    return noisy_signal, noise
+# %%
