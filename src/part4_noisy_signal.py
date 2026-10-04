@@ -5,7 +5,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from part3_known_signal import create_signal
+from part3_known_signal import (
+    create_signal, 
+    compute_frequency_from_zero_crossings
+)
 
 from part1_zero_crossings import (
     plot_signal,
@@ -148,7 +151,7 @@ def display_noisy_signal(
     plt.grid(True)
     plt.legend()
     plt.show()
-    # %% [markdown]
+# %% [markdown]
 # ### Compare the original and noisy signals
 
 
@@ -201,80 +204,6 @@ def display_amplitude_comparison(
     plt.show()
 
 # %% [markdown]
-# ### Generate and display the noisy signal
-#
-# Calculate the peak-to-peak amplitude of the original signal.
-# Set the noise amplitude to 20% of this value.
-
-
-# %%
-if __name__ == "__main__":
-
-    # Generate the original signal using Part 3
-    sampling_frequency = 100.0
-
-    t, s1, s2, s = create_signal(
-        sampling_frequency=sampling_frequency
-    )
-
-    # Calculate the peak-to-peak amplitude
-    signal_peak_to_peak_amplitude = np.ptp(s)
-
-    # Set noise amplitude to 20% of signal amplitude
-    noise_amplitude = 0.2 * signal_peak_to_peak_amplitude
-
-    print(
-        "Signal peak-to-peak amplitude:",
-        signal_peak_to_peak_amplitude
-    )
-
-    print(
-        "Noise amplitude:",
-        noise_amplitude
-    )
-
-    # Generate noisy signal and noise
-    noisy_signal, noise = create_noisy_signal(
-        t,
-        s,
-        noise_amplitude
-    )
-
-    # Plot white noise
-    display_noise(t, noise)
-
-    # Plot noisy signal
-    display_noisy_signal(t, noisy_signal)
-
-    # Compare original and noisy signals
-    display_amplitude_comparison(
-        t,
-        s,
-        noisy_signal
-    )
-
-    # Plot the noisy signal with its remarkable points
-    display_noisy_signal_and_remarkable_points(
-        t,
-        noisy_signal
-    )
-    # Apply the Butterworth low-pass filter
-    filtered_signal = low_pass_filter(
-            noisy_signal,
-            sampling_frequency,
-            cutoff_frequency=5.0,
-            order=4
-        )
-    
-        # Plot original, noisy and filtered signals
-    display_filtered_signal(
-            t,
-            s,
-            noisy_signal,
-            filtered_signal
-        )
-
-# %%# %% [markdown]
 # ### 4.2. Plot the remarkable points in the noisy signal
 #
 # Detect and plot zero crossings, local maxima and local minima
@@ -419,6 +348,30 @@ def display_filtered_signal(
     plt.grid(True)
     plt.legend()
     plt.show()
+
+    # Frequency analysis of the noisy signal
+    print("\nAnalysis of the noisy signal:")
+
+    noisy_frequency_info = compute_frequency_from_zero_crossings(
+        t,
+        noisy_signal
+    )
+
+    for key, value in noisy_frequency_info.items():
+        print(f"{key:>35} : {value}")
+
+
+    # Frequency analysis of the filtered signal
+    print("\nAnalysis of the noisy signal low-pass filtered at 5 Hz:")
+
+    filtered_frequency_info = compute_frequency_from_zero_crossings(
+        t,
+        filtered_signal
+    )
+
+    for key, value in filtered_frequency_info.items():
+        print(f"{key:>35} : {value}")
+
 # %% [markdown]
 # ### Observation and interpretation
 
@@ -427,3 +380,70 @@ def display_filtered_signal(
 # The filtered signal follows the original signal closely, demonstrating that the filter effectively attenuates unwanted high-frequency fluctuations without substantially changing the overall shape of the signal.
 
 # This result illustrates the usefulness of low-pass filtering for improving signal quality and making the main features of a movement signal easier to identify.
+
+# %%
+if __name__ == "__main__":
+
+    # Generate the original signal using Part 3
+    sampling_frequency = 100.0
+
+    t, s1, s2, s = create_signal(
+        sampling_frequency=sampling_frequency
+    )
+
+    # Calculate the peak-to-peak amplitude
+    signal_peak_to_peak_amplitude = np.ptp(s)
+
+    # Set noise amplitude to 20% of signal amplitude
+    noise_amplitude = 0.2 * signal_peak_to_peak_amplitude
+
+    print(
+        "Signal peak-to-peak amplitude:",
+        signal_peak_to_peak_amplitude
+    )
+
+    print(
+        "Noise amplitude:",
+        noise_amplitude
+    )
+
+    # Generate noisy signal and noise
+    noisy_signal, noise = create_noisy_signal(
+        t,
+        s,
+        noise_amplitude
+    )
+
+    # Plot white noise
+    display_noise(t, noise)
+
+    # Plot noisy signal
+    display_noisy_signal(t, noisy_signal)
+
+    # Compare original and noisy signals
+    display_amplitude_comparison(
+        t,
+        s,
+        noisy_signal
+    )
+
+    # Plot the noisy signal with its remarkable points
+    display_noisy_signal_and_remarkable_points(
+        t,
+        noisy_signal
+    )
+    # Apply the Butterworth low-pass filter
+    filtered_signal = low_pass_filter(
+            noisy_signal,
+            sampling_frequency,
+            cutoff_frequency=5.0,
+            order=4
+        )
+    
+        # Plot original, noisy and filtered signals
+    display_filtered_signal(
+            t,
+            s,
+            noisy_signal,
+            filtered_signal
+        )
