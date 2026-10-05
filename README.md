@@ -1,27 +1,98 @@
-# IEAP-python-series03
+# IEAP Python Series 03
 
-Detection of remarkable points (zero crossings, maxima/minima) and frequency analysis of a signal, with and without noise
+## Detection of Remarkable Points and Frequency Analysis of Signals
 
-## Group and division of tasks
+The objective of this project is to develop reusable Python functions for detecting remarkable points in signals, analyzing a known signal, estimating its frequency, and studying the effect of noise and filtering on signal analysis.
 
-| Member | Sections | File |
+---
+
+## Group Members & Contributions
+
+Each member worked on a specific part of the assignment using an individual Git branch. After completing and reviewing their work, we merged the contributions into the `main` branch, which contains the final version of the project.
+
+| Branch | Member | Contribution |
 |---|---|---|
-| Martin Pigeau | 2.2 and 2.3 | `src/part1_zero_crossings.py`, `src/part2_extrema.py` |
-| Jeanne Le Roux | 3 and repository | `src/part3_known_signal.py` |
-| Tuba | 4 | `src/part4_noisy_signal.py` |
+| `jeanne-part-3` | Jeanne Le Roux | Part 3 – Known signal generation, plotting, and frequency analysis |
+| `martin-part-2.2-2.3` | Martin Pigeau | Parts 2.2–2.3 – Improving the zero-crossing approach and implementing local maxima and minima |
+| `tuba-part-4` | Tuba Tuba | Part 4 – Noisy signal generation, remarkable points in noisy signals, and Butterworth low-pass filtering |
+| `main` | Group | Final integrated version containing the completed work of all group members |
 
-## How to run
+---
 
+## Project Objectives
+
+The main objectives of this assignment are:
+
+- Detect positive and negative zero crossings in a signal.
+- Detect local maxima and minima.
+- Create reusable functions for signal analysis and visualization.
+- Generate and analyze a known signal.
+- Estimate signal frequency from zero crossings.
+- Add noise to a signal and study its effect.
+- Detect remarkable points in a noisy signal.
+- Apply a low-pass Butterworth filter to reduce noise.
+- Compare the original, noisy, and filtered signals.
+- Work collaboratively using Git and GitHub.
+
+---
+
+## Project Structure
+
+```text
+IEAP-python-series03/
+│
+├── src/
+│   ├── part1_zero_crossings.py
+│   ├── part2_extrema.py
+│   ├── part3_known_signal.py
+│   └── part4_noisy_signal.py
+│
+├── README.md
+├── requirements.txt
+└── .gitignore
 ```
-pip install -r requirements.txt
-python src/part1_zero_crossings.py   # zero crossings: unit tests and plot (section 2.2)
-python src/part2_extrema.py          # local maxima and minima (section 2.3)
-python src/part3_known_signal.py     # known signal and frequency (section 3)
-python src/part4_noisy_signal.py     # noisy signal and low-pass filter (section 4)
+
+---
+
+## Git and GitHub Workflow
+
+Each member developed their assigned work on their own branch. We made regular commits, pushed our branches to GitHub, and used Pull Requests to review the work before integrating it into the `main` branch.
+
+This workflow allowed us to:
+
+- Work independently on separate parts of the assignment.
+- Keep track of each member's contributions.
+- Make regular and descriptive commits.
+- Review and improve code through Pull Requests.
+- Collaborate without overwriting each other's work.
+
+---
+
+## What We Learned
+
+Through this assignment, we learned how to:
+
+- Work with NumPy arrays and numerical signals.
+- Use derivatives to identify local extrema.
+- Detect zero crossings in discrete signals.
+- Create reusable Python functions.
+- Estimate signal frequency from sampled data.
+- Add and analyze noise.
+- Apply digital filtering using SciPy.
+- Visualize signal-processing results using Matplotlib.
+- Organize a Python project into multiple source files.
+- Use Git branches and commits to organize our work.
+- Collaborate through GitHub and Pull Requests.
+- Review and improve each other's code.
+
+---
+
+## How to Use This Repository
+
+Clone the repository to your computer using Git:
+
+```bash
+git clone https://github.com/jeanne-le-roux-web/IEAP-python-series03.git
 ```
 
-Each file can be run on its own, for example `part3_known_signal.py` shows the plots of section 3 and prints the frequency (1 Hz). The files import each other (part2 and part3 use part1), so they must stay in the same `src/` folder.
-
-## Workflow
-
-The `main` branch is protected: each member works on a personal branch created from the up-to-date `main` and opens a pull request, which another member reviews before the merge.
+---
